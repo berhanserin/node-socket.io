@@ -1,5 +1,3 @@
-'use strict';
-
 const express = require('express');
 const socketIO = require('socket.io');
 
@@ -10,7 +8,7 @@ const server = express()
   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
-  const io = socketIO(server, { cors: { orgins: '*' } });
+const io = socketIO(server, { cors: { orgins: '*' } });
 
 io.on('connection', (socket) => {
   console.log('Client connected');
