@@ -5,7 +5,7 @@
       let socket = io();
       let el;
 
-      socket.on('real', (timeString) => {
+      socket.on('time', (timeString) => {
         el = document.getElementById('server-time');
         el.innerHTML = timeString;
       });
