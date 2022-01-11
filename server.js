@@ -12,7 +12,7 @@ const io = socketIO(server, { cors: { orgins: '*' } });
 io.on('connection', (socket) => {
   console.log('Client connected');
   const data = axios
-    .get('https://api.ajansspor.com/apiv2/matches/soccer/getLiveMacthes', { params: { date: moment(new Date()).format("DD-MM-YYYY") } })
+    .get('https://', { params: { date: moment(new Date()).format("DD-MM-YYYY") } })
     .then((result) => {
       socket.emit('real', result.data.liveMatches);
     })
