@@ -14,6 +14,12 @@ const io = socketIO(server);
 
 io.on('connection', (socket) => {
   console.log('Client connected');
+  const data = axios
+    .get('https://api.ajansspor.com/apiv2/matches/soccer/getLiveMacthes', { params: { date: '11-01-2022' } })
+    .then((result) => {
+      socket.emit('real', result.data.liveMatches);
+    })
+    .catch((error) => error.message);
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
